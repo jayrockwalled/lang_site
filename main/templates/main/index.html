@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Site Beta</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Young Lang Site</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Main</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Me</a>
+              <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><a href="/joseph">Resume</a>
+                    <a class="dropdown-item" href="#"><a href="https://github.com/jayrockwalled">Github</a>
+                  </div>
+            </li>
+          </ul>
+        </div>
+        </nav>
+
+
+<div class="container-fluid">
+    <h1>Young Lang Site</h1>
+
+    <h2>Choose a community:</h2>
+    <form action="/main/community/"+value method="POST">
+      {% csrf_token %}
+      <div class="btn-group" role="group" aria-label="Basic example">
+          <input type="submit" class="btn btn-secondary" name="CommChoice" value='League'>
+          <input type="submit" class="btn btn-secondary" name="CommChoice" value='Dota'>
+          <input type="submit" class="btn btn-secondary" name="CommChoice" value='Pokemon'>
+      </div>
+    </form>
+
+
+    <h2>Type of analysis:</h2>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <input type="button" class="btn btn-secondary" value='Most similar'>
+        <input type="button" class="btn btn-secondary" value='Does not match'>
+        <input type="button" class="btn btn-secondary" value='Word Algebra'>
+    </div>
+    <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+</div>
+
+</body>
+</html> 
