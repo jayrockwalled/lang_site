@@ -21,6 +21,6 @@ app_name = 'main'
 urlpatterns = [
     path('', views.Index, name='index'),
     path('community/', views.Community, name='community'),
-    path('community/CommView',views.CommView, name='CommView'),
+    path('community/CommView<int:choice>',views.CommView, name='CommView'),
     path('admin/', admin.site.urls)
 ]

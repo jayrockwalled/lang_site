@@ -16,13 +16,13 @@ def Community(request):
     if request.method == 'POST':
         form = CommChoiceForm(request.POST)
         if form.is_valid():
-            # val = form.cleaned_data.get('CommChoice')
-            return HttpResponseRedirect(reverse('main:CommView'))
+            val = form.cleaned_data.get('CommChoice')
+            return HttpResponseRedirect(reverse('main:CommView',args=val))
     else:
         form = CommChoiceForm
 
     return HttpResponseRedirect(reverse('main:CommView'))
         
 
-def CommView(request):
-    return HttpResponse("Test success! You chose")
+def CommView(request,choice=1):
+    return HttpResponse("Test success! You chose "+str(choice))
