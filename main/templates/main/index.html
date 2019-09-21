@@ -36,29 +36,29 @@
         </div>
         </nav>
 
-
-<div class="container-fluid">
+<div class="container-fluid" style="margin-right: 200px; margin-left:200px;">
     <h1>Young Lang Site</h1>
-
-    <h2>Choose a community:</h2>
-    <form action="/main/community/"+value method="POST">
+    
+    <form action="/main/community/" method="POST">
       {% csrf_token %}
-      <div class="btn-group" role="group" aria-label="Basic example">
-          <input type="submit" class="btn btn-secondary" name="CommChoice" value='1'>
-          <input type="submit" class="btn btn-secondary" name="CommChoice" value='2'>
-          <input type="submit" class="btn btn-secondary" name="CommChoice" value='3'>
-      </div>
+      <h2>Choose a community:</h2>
+        <select name='CommChoice'>
+          <option value='1'>League</option>
+          <option value='2'>Chess</option>
+          <option value='3'>Pokemon</option>
+        </select>
+      <h2>Type of analysis:</h2>
+        <select name='AnalysisChoice'>
+          <option value='1'>Most similar</option>
+          <option value='3'>Most different</option>
+        </select>
+      <br> <br>
+      <label>Enter words for analysis:</label>
+        <input type="text" class="form-control" name="words">
+      <input type="submit" class="btn btn-secondary" name="submit">
     </form>
-
-
-    <h2>Type of analysis:</h2>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <input type="button" class="btn btn-secondary" value='Most similar'>
-        <input type="button" class="btn btn-secondary" value='Does not match'>
-        <input type="button" class="btn btn-secondary" value='Word Algebra'>
-    </div>
-    <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
 </div>
-
+{% block content %}
+{% endblock %}
 </body>
-</html> 
+</html>
