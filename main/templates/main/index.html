@@ -41,19 +41,19 @@
     
     <form action="/main/community/" method="POST">
       {% csrf_token %}
-      <h2>Choose a community:</h2>
-        <select name='CommChoice'>
+      <h2>Choose 2 communities:</h2>
+        <select name='CommChoice1'>
           <option value='1'>League</option>
           <option value='2'>Chess</option>
           <option value='3'>Pokemon</option>
         </select>
-      <h2>Type of analysis:</h2>
-        <select name='AnalysisChoice'>
-          <option value='1'>Most similar</option>
-          <option value='3'>Most different</option>
+        <select name='CommChoice2'>
+          <option value='1'>League</option>
+          <option value='2'>Chess</option>
+          <option value='3'>Pokemon</option>
         </select>
       <br> <br>
-      <label>Enter words for analysis:</label>
+      <label>Enter word for analysis:</label>
         <input type="text" class="form-control" name="words">
       <input type="submit" class="btn btn-secondary" name="submit">
     </form>

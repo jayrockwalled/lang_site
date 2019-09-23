@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from gensim.models import Word2Vec
 import re
+from gensim.corpora import Dictionary
 
 def urlify(s):
     # Remove all non-word characters (everything except numbers and letters)
@@ -16,8 +17,8 @@ def urlify(s):
     return s
 
 class CommChoiceForm(forms.Form):
-    CommChoice = forms.CharField(required=False)
-    AnalysisChoice = forms.CharField(required=False)
+    CommChoice1 = forms.CharField(required=False)
+    CommChoice2 = forms.CharField(required=False)
     words = forms.CharField(required=False)
     submit = forms.CharField(required=False)
 
@@ -28,12 +29,12 @@ def Community(request):
     if request.method == 'POST':
         form = CommChoiceForm(request.POST)
         if form.is_valid():
-            CommChoice = form.cleaned_data.get('CommChoice')
-            AnalysisChoice = form.cleaned_data.get('AnalysisChoice')
+            CommChoice1 = form.cleaned_data.get('CommChoice1')
+            CommChoice2 = form.cleaned_data.get('CommChoice2')
             words = form.cleaned_data.get('words')
             words = urlify(words)
 
-            args = [CommChoice, AnalysisChoice, words]
+            args = [CommChoice1, CommChoice2, words]
             return HttpResponseRedirect(reverse('main:CommView',args = args))
         else:
             for x in form.errors:
@@ -46,19 +47,47 @@ def Community(request):
         
 
 def CommView(request,choice1,choice2,slug):
-    path = 'C:/users/josep/desktop/lang_site/main/word2vec/'
+    path1 = 'C:/users/josep/Documents/GitHub/lang_site/main/word2vec/'
+    path2 = 'C:/users/josep/Documents/GitHub/lang_site/main/dictionaries/'
     template_name = 'main/results.html'
+    result = []
 
     if choice1 == 1:
-        file_name = 'league_word2vec.model'
+        wv1 = 'league_word2vec.model'
+        dict1 = 'league_dict.dict'
     elif choice1 == 2:
-        file_name = 'chess_word2vec.model'
+        wv1 = 'chess_word2vec.model'
+        dict1 = 'chess_dict.dict'
     elif choice1 == 3:
-        file_name = 'pokemon_word2vec.model'
-    model = Word2Vec.load(path+file_name, mmap='r')
+        wv1 = 'pokemon_word2vec.model'
+        dict1 = 'pokemon_dict.dict'
 
     if choice2 == 1:
-        result = model.wv.most_similar(slug)
+        wv2 = 'league_word2vec.model'
+        dict2 = 'league_dict.dict'
+    elif choice2 == 2:
+        wv2 = 'chess_word2vec.model'
+        dict2 = 'chess_dict.dict'
     elif choice2 == 3:
-        result = result = model.wv.doesnt_match(slug.split('-'))
+        wv2 = 'pokemon_word2vec.model'
+        dict2 = 'pokemon_dict.dict'
+
+    model1 = Word2Vec.load(path1+wv1, mmap='r')
+    dictionary1 = Dictionary.load(path2+dict1)
+
+    most_similar1 = model1.wv.most_similar(slug)
+    ID1 = dictionary1.token2id[slug]
+    freq1 = dictionary1.cfs[ID1]
+    result.append(most_similar1)
+    result.append(freq1)
+
+    model2 = Word2Vec.load(path1+wv2, mmap='r')
+    dictionary2 = Dictionary.load(path2+dict2)
+
+    most_similar2 = model2.wv.most_similar(slug)
+    ID2 = dictionary2.token2id[slug]
+    freq2 = dictionary1.cfs[ID2]
+    result.append(most_similar2)
+    result.append(freq2)
+
     return render(request, template_name=template_name, context={'result':result})
