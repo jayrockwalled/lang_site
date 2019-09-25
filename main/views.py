@@ -34,6 +34,14 @@ def Community(request):
             words = form.cleaned_data.get('words')
             words = urlify(words)
 
+            if CommChoice1 == CommChoice2:
+                error = 'Choose two different communities'
+                return render(request, template_name='main/error.html', context={'error':error})
+            elif not words:
+                error = 'Enter a word'
+                return render(request, template_name='main/error.html', context={'error':error})
+
+
             args = [CommChoice1, CommChoice2, words]
             return HttpResponseRedirect(reverse('main:CommView',args = args))
         else:
@@ -86,8 +94,22 @@ def CommView(request,choice1,choice2,slug):
 
     most_similar2 = model2.wv.most_similar(slug)
     ID2 = dictionary2.token2id[slug]
-    freq2 = dictionary1.cfs[ID2]
+    freq2 = dictionary2.cfs[ID2]
     result.append(most_similar2)
     result.append(freq2)
+
+    top1_1000 = model1.wv.index2entity[:1000]
+    top2_1000 = model2.wv.index2entity[:1000]
+    a_set = set(top1_1000)
+    b_set = set(top2_1000)
+    both = a_set.intersection(b_set)
+    f = open('C:/users/josep/Documents/GitHub/lang_site/main/top_1000.txt','r')
+    for line in f:
+        line = line.replace('\n','')
+        if line in both: both.remove(line)
+    f.close()
+
+    intersect = len(both)
+    result.append(intersect)
 
     return render(request, template_name=template_name, context={'result':result})
