@@ -17,10 +17,10 @@ def urlify(s):
     return s
 
 class CommChoiceForm(forms.Form):
-    CommChoice1 = forms.CharField(required=False)
-    CommChoice2 = forms.CharField(required=False)
-    words = forms.CharField(required=False)
-    submit = forms.CharField(required=False)
+    CommChoice1 = forms.CharField()
+    CommChoice2 = forms.CharField()
+    words = forms.CharField()
+    submit = forms.CharField()
 
 def Index(request):
     return render(request,'main/index.html')
@@ -37,16 +37,11 @@ def Community(request):
             if CommChoice1 == CommChoice2:
                 error = 'Choose two different communities'
                 return render(request, template_name='main/error.html', context={'error':error})
-            elif not words:
-                error = 'Enter a word'
-                return render(request, template_name='main/error.html', context={'error':error})
-
 
             args = [CommChoice1, CommChoice2, words]
             return HttpResponseRedirect(reverse('main:CommView',args = args))
         else:
-            for x in form.errors:
-                return HttpResponse(form.errors[x])
+            return render(request, template_name='main/error.html', context={'error':form.errors})
             
     else:
         form = CommChoiceForm
