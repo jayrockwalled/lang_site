@@ -12,53 +12,59 @@
 </head>
 <body>
 
-   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <a class="navbar-brand" href="#">Young Lang Site</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Main</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Me</a>
-              <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#"><a href="/joseph">Resume</a>
-                    <a class="dropdown-item" href="#"><a href="https://github.com/jayrockwalled">Github</a>
-                  </div>
-            </li>
-          </ul>
-        </div>
-        </nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="#">Young Lang Site</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Main</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Me</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#"><a href="/joseph">Resume</a>
+            <a class="dropdown-item" href="#"><a href="https://github.com/jayrockwalled">Github</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+</nav>
+<div class="center">
+        <h1>Reddit Language Anaylsis</h1>
+        <br>
+        <div>Choose two communities and then one word for analysis</div>
+        <br>
+        <form action="/main/community/" method="POST">
+          {% csrf_token %}
+          <h4>Choose communities:</h2>
+            <select name='CommChoice1'>
+              <option value='1'>League</option>
+              <option value='2'>Chess</option>
+              <option value='3'>Pokemon</option>
+            </select>
+            <select name='CommChoice2'>
+              <option value='1'>League</option>
+              <option selected='selected' value='2'>Chess</option>
+              <option value='3'>Pokemon</option>
+            </select>
+            <br> <br>
+            <label>Enter word for analysis:</label>
+            <input type="text" class="form-control" name="words" value='king'>
+            <input type="submit" class="btn btn-primary" name="sbumit">
+        </form>
+        {% block content %}
+        {% endblock %}
+      </div>
 
-<div class="container-fluid" style="margin-right: 200px; margin-left:200px;">
-    <h1>Young Lang Site</h1>
-    
-    <form action="/main/community/" method="POST">
-      {% csrf_token %}
-      <h2>Choose 2 communities:</h2>
-        <select name='CommChoice1'>
-          <option value='1'>League</option>
-          <option value='2'>Chess</option>
-          <option value='3'>Pokemon</option>
-        </select>
-        <select name='CommChoice2'>
-          <option value='1'>League</option>
-          <option selected='selected' value='2'>Chess</option>
-          <option value='3'>Pokemon</option>
-        </select>
-      <br> <br>
-      <label>Enter word for analysis:</label>
-        <input type="text" class="form-control" name="words" value='king'>
-      <input type="submit" class="btn btn-secondary" name="submit">
-    </form>
-</div>
-{% block content %}
-{% endblock %}
+    </div>
+
+  </div>
+
 </body>
 </html>

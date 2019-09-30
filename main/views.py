@@ -20,7 +20,7 @@ class CommChoiceForm(forms.Form):
     CommChoice1 = forms.CharField()
     CommChoice2 = forms.CharField()
     words = forms.CharField()
-    submit = forms.CharField()
+    submit = forms.CharField(required=False)
 
 def Index(request):
     return render(request,'main/index.html')
@@ -51,45 +51,34 @@ def Community(request):
 
 def CommView(request,choice1,choice2,slug):
     path1 = 'C:/users/josep/Documents/GitHub/lang_site/main/word2vec/'
-    path2 = 'C:/users/josep/Documents/GitHub/lang_site/main/dictionaries/'
     template_name = 'main/results.html'
     result = []
 
     if choice1 == 1:
         wv1 = 'league_word2vec.model'
-        dict1 = 'league_dict.dict'
     elif choice1 == 2:
         wv1 = 'chess_word2vec.model'
-        dict1 = 'chess_dict.dict'
     elif choice1 == 3:
         wv1 = 'pokemon_word2vec.model'
-        dict1 = 'pokemon_dict.dict'
 
     if choice2 == 1:
         wv2 = 'league_word2vec.model'
-        dict2 = 'league_dict.dict'
     elif choice2 == 2:
         wv2 = 'chess_word2vec.model'
-        dict2 = 'chess_dict.dict'
     elif choice2 == 3:
         wv2 = 'pokemon_word2vec.model'
-        dict2 = 'pokemon_dict.dict'
 
     model1 = Word2Vec.load(path1+wv1, mmap='r')
-    dictionary1 = Dictionary.load(path2+dict1)
 
     most_similar1 = model1.wv.most_similar(slug)
-    ID1 = dictionary1.token2id[slug]
-    freq1 = dictionary1.cfs[ID1]
+    freq1 = model1.wv.vocab[slug].count
     result.append(most_similar1)
     result.append(freq1)
 
     model2 = Word2Vec.load(path1+wv2, mmap='r')
-    dictionary2 = Dictionary.load(path2+dict2)
 
     most_similar2 = model2.wv.most_similar(slug)
-    ID2 = dictionary2.token2id[slug]
-    freq2 = dictionary2.cfs[ID2]
+    freq2 = model2.wv.vocab[slug].count
     result.append(most_similar2)
     result.append(freq2)
 
