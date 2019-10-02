@@ -19,7 +19,7 @@ from . import views
 
 app_name = 'main'
 urlpatterns = [
-    path('', views.Index, name='index'),
+    path('', views.Index, name='Index'),
     path('community/', views.Community, name='community'),
     path('community/CommView/<int:choice1>/<int:choice2>/<slug:slug>',views.CommView, name='CommView'),
     path('admin/', admin.site.urls)
