@@ -52,7 +52,7 @@ def Community(request):
 def CommView(request,choice1,choice2,slug):
     path1 = 'C:/users/josep/Documents/GitHub/lang_site/main/word2vec/'
     template_name = 'main/results.html'
-    result = []
+    result = {}
 
     if choice1 == 1:
         wv1 = 'league_word2vec.model'
@@ -72,28 +72,34 @@ def CommView(request,choice1,choice2,slug):
 
     most_similar1 = model1.wv.most_similar(slug)
     freq1 = model1.wv.vocab[slug].count
-    result.append(most_similar1)
-    result.append(freq1)
+    result['Most Similar 1'] = most_similar1
+    result['Freq 1'] = freq1
 
     model2 = Word2Vec.load(path1+wv2, mmap='r')
 
     most_similar2 = model2.wv.most_similar(slug)
     freq2 = model2.wv.vocab[slug].count
-    result.append(most_similar2)
-    result.append(freq2)
+    result['Most Similar 2'] = most_similar2
+    result['Freq 2'] = freq2
 
-    top1_1000 = model1.wv.index2entity[:1000]
-    top2_1000 = model2.wv.index2entity[:1000]
-    a_set = set(top1_1000)
-    b_set = set(top2_1000)
-    both = a_set.intersection(b_set)
-    f = open('C:/users/josep/Documents/GitHub/lang_site/main/top_1000.txt','r')
-    for line in f:
-        line = line.replace('\n','')
-        if line in both: both.remove(line)
-    f.close()
+    # top1_1000 = model1.wv.index2entity[:1000]
+    # top2_1000 = model2.wv.index2entity[:1000]
+    # a_set = set(top1_1000)
+    # b_set = set(top2_1000)
+    # both = a_set.intersection(b_set)
+    # f = open('C:/users/josep/Documents/GitHub/lang_site/main/top_1000.txt','r')
+    # for line in f:
+    #     line = line.replace('\n','')
+    #     if line in both: both.remove(line)
+    # f.close()
 
-    intersect = len(both)
-    result.append(intersect)
+    # intersect = len(both)
+    # result['Intersection'] = intersect
 
     return render(request, template_name=template_name, context={'result':result})
+
+
+    # format of result is a Dictionary
+    # result['Most Simialr 1'] = list of 10 most similar words + similarity calc for community 1
+    # result['Freq 1'] = int of total frequency of word in community 1
+    # repeat for community 2

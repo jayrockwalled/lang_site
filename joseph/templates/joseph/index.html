@@ -1,1 +1,56 @@
-Young wang
+<!DOCTYPE html>
+<head>
+    <title>Site Beta</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="static/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light" style="background-color:white">
+    <a class="navbar-brand yeet" href="/">Young Lang Site</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item yeet">
+          <a class="nav-link yeet" href="#">Main</a>
+        </li>
+        <li class="nav-item yeet">
+          <a class="nav-link yeet" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Me</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#"><a href="/joseph">Resume</a>
+              <a class="dropdown-item" href="#"><a href="https://github.com/jayrockwalled">Github</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="main">
+  <h1>Joseph Rajchwald</h1>
+  <h2>Work</h2>
+    
+  {% for w in work %}
+  <div class="content">
+    <h3>{{ w.name}} </h3>
+    <p>{{ w.description }}. {{ w.start_date }} - {{ w.end_date }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<div class='blurb'>
+  I have been teaching myself different aspects of software development the past three years.
+
+</div>
+<a href="mailto:joseph.rajchwald1@gmail.com">Contact</a>
+</body>
