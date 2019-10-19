@@ -50,7 +50,8 @@ def Community(request):
         
 
 def CommView(request,choice1,choice2,slug):
-    path1 = 'C:/users/josep/Documents/GitHub/lang_site/main/word2vec/'
+    path1 ='C:/Users/arajc/Desktop/langproject/lang_site/main/word2vec/'
+    
     template_name = 'main/results.html'
     result = {}
 
