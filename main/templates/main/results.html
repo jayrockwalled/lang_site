@@ -2,15 +2,16 @@
 
 {% block content %}
     <div class="jumbotron">
-        {% for key, values in result.items %}
-            <h1>{{ key }}</h1>
-            {% if 'eq' in key %}
-                <h2>{{ values }}</h2>
-            {% else %}
-                {% for x in values %}
-                    <h2>{{ x }}</h2>
-                {% endfor %}
-            {% endif %}
-        {% endfor %}
+        <table>
+            <tr><th>Community 1</th><th>Community 2</th></tr>
+            {% for sim1, sim2 in zip %}
+                <tr>
+                    <td>{{ sim1 }}</td>
+                    <td>{{ sim2 }}</td>
+                </tr>
+            {% endfor %}
+            <tr><th>Community 1 frequency</th><th>Community 2 frequency</th></tr>
+            <tr><td>{{ freq1 }}</td><td>{{ freq2 }}</td></tr>
+        </table>
     </div>
 {% endblock %}

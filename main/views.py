@@ -50,7 +50,7 @@ def Community(request):
         
 
 def CommView(request,choice1,choice2,slug):
-    path1 ='C:/Users/arajc/Desktop/langproject/lang_site/main/word2vec/'
+    path1 ='C:/Users/josep/Documents/Github/lang_site/main/word2vec/'
     
     template_name = 'main/results.html'
     result = {}
@@ -71,17 +71,22 @@ def CommView(request,choice1,choice2,slug):
 
     model1 = Word2Vec.load(path1+wv1, mmap='r')
 
-    most_similar1 = model1.wv.most_similar(slug)
-    freq1 = model1.wv.vocab[slug].count
-    result['Most Similar 1'] = most_similar1
-    result['Freq 1'] = freq1
+    try:
+        most_similar1 = model1.wv.most_similar(slug)
+        freq1 = model1.wv.vocab[slug].count
+        result['Most Similar 1'] = most_similar1
+        result['Freq 1'] = freq1
 
-    model2 = Word2Vec.load(path1+wv2, mmap='r')
+        model2 = Word2Vec.load(path1+wv2, mmap='r')
 
-    most_similar2 = model2.wv.most_similar(slug)
-    freq2 = model2.wv.vocab[slug].count
-    result['Most Similar 2'] = most_similar2
-    result['Freq 2'] = freq2
+        most_similar2 = model2.wv.most_similar(slug)
+        freq2 = model2.wv.vocab[slug].count
+        result['Most Similar 2'] = most_similar2
+        result['Freq 2'] = freq2
+
+    except:
+        error = 'That word is not in both communities\' vocabulary.'
+        return render(request, template_name='main/error.html', context={'error':error})
 
     # top1_1000 = model1.wv.index2entity[:1000]
     # top2_1000 = model2.wv.index2entity[:1000]
@@ -96,10 +101,12 @@ def CommView(request,choice1,choice2,slug):
 
     # intersect = len(both)
     # result['Intersection'] = intersect
+    zipped = zip(most_similar1, most_similar2)
 
-    return render(request, template_name=template_name, context={'result':result})
+    return render(request, template_name=template_name, context={'zip': zipped, 'freq1':freq1, 'freq2':freq2})
 
-
+    # 'zip': zipped
+    # 'most_similar_1': most_similar1, 'most_similar_2': most_similar2
     # format of result is a Dictionary
     # result['Most Simialr 1'] = list of 10 most similar words + similarity calc for community 1
     # result['Freq 1'] = int of total frequency of word in community 1
