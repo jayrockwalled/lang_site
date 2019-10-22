@@ -1,3 +1,3 @@
 # lang_site
 
-Personal website + language analysis features.
+This branch adds articles.
