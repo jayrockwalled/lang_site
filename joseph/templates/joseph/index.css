@@ -1,4 +1,0 @@
-.text-center::before{
-    content:"";
-    margin-left:calc(100% - 75%);
-  } 
