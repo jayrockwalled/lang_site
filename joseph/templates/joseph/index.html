@@ -8,48 +8,130 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style>
+      body {
+        background-color: whitesmoke;
+        color: black;
+      }
+  
+      .navbar {
+        margin: 16px 0px;
+        padding: 0;
+        background-color: grey;
+      }
+  
+      nav {
+        width: 100%;
+        margin-bottom: 20px;
+        color: whitesmoke;
+      }
+  
+      .logo {
+        float: left;
+        font-size: 26px;
+      }
+  
+      .rightLinks {
+        float: right;
+  
+      }
+  
+      .navlink {
+        padding: 0 16px;
+      }
+  
+      h1,h2,h4 {
+        text-align: center;
+        color: black;
+      }
+  
+      .btn {
+        margin: 12px 0;
+      }
+  
+      .jumbotron {
+        background: rgb(8, 8, 7);
+        color: whitesmoke;
+      }
+  
+      a {
+        text-decoration: none;
+        color: whitesmoke;
+      }
+      html, body, .container
+      {
+          height: 100%; 
+          min-height: 100%;
+          color:whitesmoke;
+      }
+
+      .first {
+          float: left;
+          width: 20%;
+          height: 30%;
+          background-color: red;
+      }
+
+      .second{
+          float: left;
+          width: 20%;
+          height: 70%;
+          background-color: green;
+      }
+
+
+      .third{
+          float: right;
+          width: 80%;
+          height: 80%;
+          background-color: blue;
+      }
+
+      .fourth {
+          float: right;
+          width: 40%;
+          height: 20%;
+          background-color: #DDDDDD;
+      }
+
+      .last{
+          float: right;
+          width: 40%;
+          height: 20%;
+          background-color: yellow;
+      }
+    </style>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-light" style="background-color:white">
-    <a class="navbar-brand yeet" href="/">Young Lang Site</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item yeet">
-          <a class="nav-link yeet" href="#">Main</a>
-        </li>
-        <li class="nav-item yeet">
-          <a class="nav-link yeet" href="#">About</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Me</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><a href="/joseph">Resume</a>
-              <a class="dropdown-item" href="#"><a href="https://github.com/jayrockwalled">Github</a>
-          </div>
-        </li>
-      </ul>
+  
+    <div class="navbar">
+      <nav>
+        <a class="logo">Young Lang Site</a>
+
+        <span class="rightLinks">
+          <a class="navlink" href="/main">Main</a>
+          <a class="navlink" href="/joseph">Me</a>
+          <a class="navlink" href="https://github.com/jayrockwalled">Github</a>
+        </span>
+      </nav>
     </div>
-  </nav>
 
 
-<div class="main">
+  <div class="container">
   <h1>Joseph Rajchwald</h1>
+  <h4>Programming, gaming, learning</h4>
+  <div>I have been teaching myself different aspects of software development the past three years.</div>
   <h2>Work</h2>
-    
-  {% for w in work %}
-  <div class="content">
-    <h3>{{ w.name}} </h3>
-    <p>{{ w.description }}. {{ w.start_date }} - {{ w.end_date }}</p>
+  <h2>Projects</h2>
+  <h2>Interests</h2>
+  <div class="container">
+    <div class="first">Math/Programming</div><div class="third">Gaming</div>
+    <div class="second">Fitness</div><div class="fourth">fourth</div><div class="last">last</div>
   </div>
-  {% endfor %}
-</div>
 
-<div class='blurb'>
-  I have been teaching myself different aspects of software development the past three years.
+
 
 </div>
 <a href="mailto:joseph.rajchwald1@gmail.com">Contact</a>
