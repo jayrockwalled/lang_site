@@ -2,15 +2,29 @@
 
 {% block content %}
     <div class="jumbotron">
+        <h4 class="jumbotext">Similarities</h4>
+        <p class="jumbotext">Each list shows the top 5 most similar words to the one you entered along with the associated
+            similarity quantification. Similar words can be used in place or near the target word and 
+            have the sentence retain similar meaning.
+        </p>
         <table>
-            <tr><th>Community 1</th><th>Community 2</th></tr>
+            <tr><th>{{ comm1 }}</th><th>{{ comm2 }}</th></tr>
             {% for sim1, sim2 in zip %}
                 <tr>
                     <td>{{ sim1 }}</td>
                     <td>{{ sim2 }}</td>
                 </tr>
             {% endfor %}
-            <tr><th>Community 1 frequency</th><th>Community 2 frequency</th></tr>
+        </table>
+        <br>
+            <h4 class="jumbotext">TFIDF</h4>
+            <p class="jumbotext">Term Frequency Inverse Document Frequency (TFIDF) is a measure of 
+                how important a word is when it appears in a sentence. This is calculated by measuring
+                how often a word is used in the corpus and how often it appears in a sentence.
+            </p>
+        <table>
+            <th>{{ comm1 }} TFIDF</th><th>{{ comm2 }} TFIDF</th>
+            <tr><th>{{ comm1 }} frequency</th><th>{{ comm2 }} frequency</th></tr>
             <tr><td>{{ freq1 }}</td><td>{{ freq2 }}</td></tr>
         </table>
     </div>

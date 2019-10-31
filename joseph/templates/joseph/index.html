@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Site Beta</title>
+    <title>About · Joseph Rajchwald</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="static/index.css">
@@ -8,100 +8,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-    <style>
-      body {
-        background-color: whitesmoke;
-        color: black;
-      }
-  
-      .navbar {
-        margin: 16px 0px;
-        padding: 0;
-        background-color: grey;
-      }
-  
-      nav {
-        width: 100%;
-        margin-bottom: 20px;
-        color: whitesmoke;
-      }
-  
-      .logo {
-        float: left;
-        font-size: 26px;
-      }
-  
-      .rightLinks {
-        float: right;
-  
-      }
-  
-      .navlink {
-        padding: 0 16px;
-      }
-  
-      h1,h2,h4 {
-        text-align: center;
-        color: black;
-      }
-  
-      .btn {
-        margin: 12px 0;
-      }
-  
-      .jumbotron {
-        background: rgb(8, 8, 7);
-        color: whitesmoke;
-      }
-  
-      a {
-        text-decoration: none;
-        color: whitesmoke;
-      }
-      html, body, .container
-      {
-          height: 100%; 
-          min-height: 100%;
-          color:whitesmoke;
-      }
-
-      .first {
-          float: left;
-          width: 20%;
-          height: 30%;
-          background-color: red;
-      }
-
-      .second{
-          float: left;
-          width: 20%;
-          height: 70%;
-          background-color: green;
-      }
-
-
-      .third{
-          float: right;
-          width: 80%;
-          height: 80%;
-          background-color: blue;
-      }
-
-      .fourth {
-          float: right;
-          width: 40%;
-          height: 20%;
-          background-color: #DDDDDD;
-      }
-
-      .last{
-          float: right;
-          width: 40%;
-          height: 20%;
-          background-color: yellow;
-      }
-    </style>
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'joseph/index.css' %}">
 </head>
 
 <body>
@@ -121,14 +30,11 @@
 
   <div class="container">
   <h1>Joseph Rajchwald</h1>
-  <h4>Programming, gaming, learning</h4>
-  <div>I have been teaching myself different aspects of software development the past three years.</div>
-  <h2>Work</h2>
-  <h2>Projects</h2>
-  <h2>Interests</h2>
-  <div class="container">
-    <div class="first">Math/Programming</div><div class="third">Gaming</div>
-    <div class="second">Fitness</div><div class="fourth">fourth</div><div class="last">last</div>
+  <p>I taught myself various assets of programming by engaging myself in projects. To learn python
+    and basic algorithms, I solved problems on projecteuler.net. To learn web development, I build 
+    this website. To learn about NLP and machine learning, I did projects that interested me associated
+    with those topics.
+  </p>
   </div>
 
 

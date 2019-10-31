@@ -2,86 +2,17 @@
 <html lang="en">
 
 <head>
-  <title>Site Beta</title>
+  <title>Synonym Analysis · Joseph Rajchwald</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <style>
-    body {
-      background-color: whitesmoke;
-      color: black;
-    }
+  
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'main/index.css' %}">
 
-    .navbar {
-      margin: 16px 0px;
-      padding: 0;
-      background-color: grey;
-    }
-
-    nav {
-      width: 100%;
-      margin-bottom: 20px;
-      color: whitesmoke;
-    }
-
-    .logo {
-      float: left;
-      font-size: 26px;
-    }
-
-    .rightLinks {
-      float: right;
-
-    }
-
-    .navlink {
-      padding: 0 16px;
-    }
-
-    h1,
-    h4 {
-      text-align: center;
-      color:black
-    }
-
-    .btn {
-      margin: 12px 0;
-    }
-
-    .jumbotron {
-      background: rgb(8, 8, 7);
-      color: whitesmoke;
-    }
-
-    a {
-      text-decoration: none;
-      color: whitesmoke;
-    }
-    html, body, .container
-      {
-          height: 100%; 
-          min-height: 100%;
-          color:whitesmoke;
-      }
-
-      .first {
-          float: left;
-          width: 20%;
-          height: 100%;
-          background-color: red;
-      }
-
-      .third{
-          float: right;
-          width: 80%;
-          height: 100%;
-          background-color: blue;
-      }
-  </style>
 </head>
 
 <body>
@@ -90,7 +21,7 @@
         <a class="logo">Young Lang Site</a>
 
         <span class="rightLinks">
-          <a class="navlink" href="/main">Main</a>
+          <a class="navlink" href="/main">Synonym Analysis</a>
           <a class="navlink" href="/joseph">Me</a>
           <a class="navlink" href="https://github.com/jayrockwalled">Github</a>
         </span>
@@ -99,17 +30,15 @@
 
     <div class="container">
     <div class="content">
-      <h1>Articles</h1>
-      <div class="container">
-          <div class="first">All Articles</div><div class="third">Latest Article</div>
-      </div>
       <h1>Reddit Language Anaylsis</h1>
       <br>
-      <h4>Choose two communities and then one word for analysis</h4>
+      <h4>Word definitions are relative to what we choose them to mean. Analyze how different communities
+        see a word by using the buttons below.
+      </h4>
       <br>
       <form action="/main/community/" method="POST">
         {% csrf_token %}
-
+        <div class='dropdowns'>
         <select name='CommChoice1'>
           <option value='1'>League</option>
           <option value='2'>Chess</option>
@@ -120,10 +49,11 @@
           <option selected='selected' value='2'>Chess</option>
           <option value='3'>Pokemon</option>
         </select>
-        <br> <br>
+        </div>
+        <br>
         <label>Enter word for analysis:</label>
-        <input type="text" class="form-control" name="words" value='king'>
-        <input type="submit" class="btn btn-primary" name="sbumit">
+        <input type="text" class="form-control" name="words" value='best'>
+        <input type="submit" class="btn btn-primary" name="submit">
       </form>
       {% block content %}
       {% endblock %}

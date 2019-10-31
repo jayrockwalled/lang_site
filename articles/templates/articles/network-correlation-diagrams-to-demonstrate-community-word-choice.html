@@ -1,0 +1,51 @@
+{% extends 'articles/base.html' %}
+{% block content %}
+<h3>Network Correlation Diagrams to Demonstrate Community Word Choice</h3>
+<div class='container'>
+<div class='catch'>Visualizing Community Word Choice</div>
+<h5>Motivation</h5>
+<p>In 2015, I had been playing videogames for around 12 years. However, around February of this year
+    when I first started following the competitive Super Smash Bros. Melee scene, was the first time 
+    I encountered a community with a completely different set of lingo than what I was used to. 
+</p>
+<p>The players and commentators of the game used phrases like "get bodied", "disrespect", and other 
+    much more foul language. The community seemed a lot more vulgar and raw compared to the various 
+    Nintendo communities I followed. I thought this was very interesting and took note of different
+    community word choices whenever I was able. Eventually, I hoped to be able to quantify this.
+</p>
+<h5>Tools and Resources</h5>
+<ol>
+    <li>Reddit comments as the corpus torrented from THIS LINK</li>
+    <li>Gensim for the NLP tools and dictionary feature</li>
+    <li>Pandas for correlaton calculations and organizing data</li>
+    <li>NetworkX for data visualization</li>
+</ol>
+<h5>Method</h5>
+<ol>
+    <li>Gather language datadata</li>
+        <ul>
+            <li>Various reddit subreddit comments served as the corpus</li>
+            <li>I chose communities that interested me and that I thought would yield interesting results</li>
+            <li>Make sure to clean the data of any stop words and noise in this stage because it would 
+                save time later
+            </li>
+        </ul>
+    <li>Build word2vec models for each community</li>
+        <ul>
+            <li>Enables pulling most frequently used words</li>
+            <li>Useful for other various NLP analysis for other projects later</li>
+        </ul>
+    <li>NLP Analysis</li>
+        <ol>
+            <li>Within each community find the top 1000 most frequently used words</li>
+            <li>Find how many of the top 1000 words intersect with each other community within each community</li>
+        </ol>
+    <li>Use Pandas to calculate correlation between each community</li>
+    <li>Use NetworkX to visualize</li>
+</ol>
+<h5>Results</h5>
+{% load static %}
+<img src="{% static "articles/everything.png" %}" alt="My image">
+
+</div>
+{% endblock %}
