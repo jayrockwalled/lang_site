@@ -4,29 +4,9 @@ body {
   }
 
   .navbar {
-    margin: 16px 0px;
+    margin: 0px 0px;
     padding: 0;
-    background-color: rgb(7, 5, 5);
-  }
-
-  nav {
-    width: 100%;
-    margin-bottom: 20px;
-    color: whitesmoke;
-  }
-
-  .logo {
-    float: left;
-    font-size: 26px;
-  }
-
-  .rightLinks {
-    float: right;
-
-  }
-
-  .navlink {
-    padding: 0 16px;
+    background-color: black;
   }
 
   h1,h4 {
@@ -57,22 +37,24 @@ body {
         height: 100%; 
         min-height: 100%;
         color:whitesmoke;
-        max-width: 65em;
         margin-left: auto;
         margin-right: auto;
     }
 
-  .dropdowns, label, .btn-primary {
-    display: table;
-    margin-right: auto;
-    margin-left: auto;
-  }
   table {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .form-control {
+    margin: auto;
+    width: 67%;
+  }
+
   .jumbotext {
     color: whitesmoke;
   }
+  input{
+    text-align:center;
+ }

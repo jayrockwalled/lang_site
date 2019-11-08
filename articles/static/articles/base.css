@@ -1,7 +1,10 @@
+body, html {
+  height: 100%;
+}
+
 body {
     background-color: whitesmoke;
     color: black;
-    margin: 10px;
 }
 
 h1, h3, h5 {
@@ -12,7 +15,7 @@ h1, h3, h5 {
 .container {
     text-align: left;
     vertical-align: baseline;
-    max-width: 32.5em;
+    width: 50%;
     margin: auto;
 }
 
@@ -33,3 +36,65 @@ table{
     font-style: italic;
     text-align: center;
 }
+
+.navbar {
+    margin: 0px 0px;
+    padding: 0;
+    background-color: black;
+  }
+
+  nav {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: whitesmoke;
+  }
+
+  .logo {
+    float: left;
+    font-size: 26px;
+    padding: 0 16px;
+  }
+
+  .rightLinks {
+    float: right;
+  }
+
+  .navlink {
+    padding: 0 16px;
+  }
+
+  a {
+    text-decoration: none;
+    color: whitesmoke;
+  }
+
+  .article {
+      color: black
+  }
+
+  th, td {
+    text-align: center;
+  }
+  .date {
+    width: 30%;
+  }
+
+  footer {
+    background-color: black;
+    color: whitesmoke;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 0px;
+    height: auto;
+    min-height: 10%;
+  }
+
+  footer ul {
+    margin-bottom: 0px;
+  }
+
+  .wrapper {
+    height: 100%
+  }
