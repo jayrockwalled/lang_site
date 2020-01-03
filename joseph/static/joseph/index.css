@@ -1,55 +1,109 @@
 body {
-    background-color: whitesmoke;
-    color: black;
-  }
+  background-color: whitesmoke;
+  color: black;
+}
 
-  .navbar {
-    margin: 16px 0px;
-    padding: 0;
-    background-color: grey;
-  }
+h1, h3, h5 {
+  text-align: center;
+  color: black
+}
 
-  nav {
-    width: 100%;
-    margin-bottom: 20px;
-    color: whitesmoke;
-  }
+.container {
+  text-align: left;
+  vertical-align: baseline;
+  width: 80%;
+  margin: auto;
+}
 
-  .logo {
-    float: left;
-    font-size: 26px;
-  }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
 
-  .rightLinks {
-    float: right;
+table{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  }
+.catch {
+  font-style: italic;
+  text-align: center;
+}
 
-  .navlink {
-    padding: 0 16px;
-  }
+.navbar {
+  margin: 0px 0px;
+  padding: 0;
+  background-color: black;
+}
 
-  h1,h2,h4 {
-    text-align: center;
-    color: black;
-  }
+nav {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: whitesmoke;
+}
 
-  .btn {
-    margin: 12px 0;
-  }
+.logo {
+  float: left;
+  font-size: 26px;
+  padding: 0 16px;
+}
 
-  .jumbotron {
-    background: rgb(8, 8, 7);
-    color: whitesmoke;
-  }
+.rightLinks {
+  float: right;
+}
 
-  a {
-    text-decoration: none;
-    color: whitesmoke;
-  }
-  html, body, .container
-  {
-      height: 100%; 
-      min-height: 100%;
-      color:black;
-  }
+.navlink {
+  padding: 0 16px;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.article {
+    color: black
+}
+
+th, td {
+  text-align: center;
+}
+.date {
+  width: 30%;
+}
+
+footer {
+  background-color: black;
+  color: whitesmoke;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  position: absolute;
+  height: 2.5rem;
+}
+
+footer ul {
+  margin-bottom: 0px;
+  background: black;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  position: relative;
+  min-height: 100vh;
+  margin-bottom: 10px;
+}
+
+.btn {
+  color: whitesmoke;
+  background-color: grey;
+}

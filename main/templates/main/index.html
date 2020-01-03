@@ -16,6 +16,8 @@
 </head>
 
 <body>
+  <div class="wrapper">
+  <div class="content-wrapper">
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">Joseph Rajchwald</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,15 +32,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/articles">Articles</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Me
+        <li class="nav-item">
+          <a class="nav-link" href="/joseph">Me
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/joseph">About</a>
-            <a class="dropdown-item" href="https://www.github.com/jayrockwalled">Github</a>
-            <a class="dropdown-item" href="https://www.linkedin.com/in/joseph-rajchwald-28a793b0/">LinkdIn</a>
-          </div>
         </li>
       </ul>
     </div>
@@ -52,31 +48,106 @@
       <br>
       <form action="/main/community/" method="POST">
         {% csrf_token %}
-        <div class='dropdowns'>
+        <div class='dropdowns row'>
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
         <select name='CommChoice1'>
-          <option value='1'>League</option>
-          <option value='2'>Chess</option>
-          <option value='3'>Pokemon</option>
+          <option value='bjj'>Brazilian Jiu-Jitsu</option>
+          <option value='boardgames'>Boardgames</option>
+          <option value='Boxing'>Boxing</option>
+          <option value='chess'>Chess</option>
+          <option value='dota2'>Dota 2</option>
+          <option value='GlobalOffensive'>Global Offensive</option>
+          <option value='hs'>Hearthstone</option>
+          <option value='judo'>Judo</option>
+          <option value='league'>League of Legends</option>
+          <option value='magicTCG'>Magic TCG</option>
+          <option value='MMA'>MMA</option>
+          <option value='pokemon'>Pokemon</option>
+          <option value='poker'>Poker</option>
+          <option value='smashbros'>Smashbros</option>
+          <option value='taekwondo'>Taekwondo</option>
         </select>
         <select name='CommChoice2'>
-          <option value='1'>League</option>
-          <option selected='selected' value='2'>Chess</option>
-          <option value='3'>Pokemon</option>
-        </select>
+          <option value='bjj'>Brazilian Jiu-Jitsu</option>
+          <option selected='selected' value='boardgames'>Boardgames</option>
+          <option value='Boxing'>Boxing</option>
+          <option value='chess'>Chess</option>
+          <option value='dota2'>Dota 2</option>
+          <option value='GlobalOffensive'>Global Offensive</option>
+          <option value='hs'>Hearthstone</option>
+          <option value='judo'>Judo</option>
+          <option value='league'>League of Legends</option>
+          <option value='magicTCG'>Magic TCG</option>
+          <option value='MMA'>MMA</option>
+          <option value='pokemon'>Pokemon</option>
+          <option value='poker'>Poker</option>
+          <option value='smashbros'>Smashbros</option>
+          <option value='taekwondo'>Taekwondo</option>
+        </select></div>
         </div>
         <br>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
         <label>Enter word for analysis:</label>
+      </div>
+      </div>
         <input type="text" class="form-control" name="words" value='best'>
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
         <input type="submit" class="btn btn-primary" name="submit">
+      </div>
+    </div>
       </form>
       {% block content %}
       {% endblock %}
+
+    </div>
+
+
+    </div>
+    <br>
+    <!-- lazy workaround to footer covering content -->
+    <br>
+    <footer class="page-footer font-small unique-color-dark pt-4">
+        <div class="footercontainer">
+    
+            <!-- Call to action -->
+            <ul class="list-unstyled list-inline text-center py-2">
+              <li class="list-inline-item">
+                  <a class="btn" href="https://www.github.com/jayrockwalled">
+                    {% load static %}
+                    <img src="{% static "articles/github_logo.png" %}">
+                    Github</a>
+              </li>
+              <li class="list-inline-item">
+                  <a class="btn" href="https://www.github.com/jayrockwalled">
+                    {% load static %}
+                    <img src="{% static "articles/linkedin_logo.png" %}">
+                    LinkdIn</a>
+              </li>
+              <li class="list-inline-item">
+                  <a class="btn" href="mailto:joseph.rajchwald1@gmail.com">
+                      {% load static %}
+                      <img src="{% static "articles/email_logo.png" %}">
+                      Email</a>
+              </li>
+            </ul>
+            <!-- Call to action -->
+        
+          </div>
+        </div>
+    
+    
+    </footer>
     </div>
 
 
   </div>
   </div>
-
+</div>
 </body>
 
 </html>

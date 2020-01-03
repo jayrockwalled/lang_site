@@ -20,12 +20,18 @@
             <h4 class="jumbotext">TFIDF</h4>
             <p class="jumbotext">Term Frequency Inverse Document Frequency (TFIDF) is a measure of 
                 how important a word is when it appears in a sentence. This is calculated by measuring
-                how often a word is used in the corpus and how often it appears in a sentence.
+                how often a word is used in the corpus and how often it appears in a document. A similarity 
+                score closer to one indicates stronger similarity.
+            </p>
+            <p class="jumbotext">A TFIDF close to 1 indicates the word is very relevant and frequently used
+                in the community.
             </p>
         <table>
             <th>{{ comm1 }} TFIDF</th><th>{{ comm2 }} TFIDF</th>
-            <tr><th>{{ comm1 }} frequency</th><th>{{ comm2 }} frequency</th></tr>
-            <tr><td>{{ freq1 }}</td><td>{{ freq2 }}</td></tr>
+            <tr>
+                <td>{{ tfidf1 }}</td>
+                <td>{{ tfidf2 }}</td>
+            </tr>
         </table>
     </div>
 {% endblock %}

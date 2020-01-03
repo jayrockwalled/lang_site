@@ -8,6 +8,7 @@ from django import forms
 from gensim.models import Word2Vec
 import re
 from gensim.corpora import Dictionary
+import pandas as pd
 
 def urlify(s):
     # Remove all non-word characters (everything except numbers and letters)
@@ -51,26 +52,13 @@ def Community(request):
 
 def CommView(request,choice1,choice2,slug):
     path1 ='C:/Users/josep/Documents/Github/lang_site/main/word2vec/'
-
-    if choice1 == 1:
-        wv1 = 'league_word2vec.model'
-        comm1_name = 'League'
-    elif choice1 == 2:
-        wv1 = 'chess_word2vec.model'
-        comm1_name = 'Chess'
-    elif choice1 == 3:
-        wv1 = 'pokemon_word2vec.model'
-        comm1_name = 'Pokemon'
-
-    if choice2 == 1:
-        wv2 = 'league_word2vec.model'
-        comm2_name = 'League'
-    elif choice2 == 2:
-        wv2 = 'chess_word2vec.model'
-        comm2_name = 'Chess'
-    elif choice2 == 3:
-        wv2 = 'pokemon_word2vec.model'
-        comm2_name = 'Pokemon'
+    slug = slug.lower()
+    if len(slug.split('-')) > 1:
+        error = 'Please only enter a single word.'
+        return render(request, template_name='main/error.html', context={'error':error})
+    
+    wv1 = choice1+'_word2vec.model'
+    wv2 = choice2+'_word2vec.model'
 
     try:
         model1 = Word2Vec.load(path1+wv1, mmap='r')
@@ -87,12 +75,18 @@ def CommView(request,choice1,choice2,slug):
         error = 'That word is not in both communities\' vocabulary.'
         return render(request, template_name='main/error.html', context={'error':error})
 
+    df1 = pd.read_csv('C:/Users/josep/Documents/Github/lang_site/main/tfidf/'+choice1+'_tfidf_df.csv')
+    df2 = pd.read_csv('C:/Users/josep/Documents/Github/lang_site/main/tfidf/'+choice2+'_tfidf_df.csv')
+    tfidf1 = df1[slug].to_string(index=False)
+    tfidf2 = df2[slug].to_string(index=False)
     zipped = zip(most_similar1, most_similar2)
     context = {
         'zip': zipped, 
         'freq1':freq1, 
         'freq2':freq2,
-        'comm1':comm1_name,
-        'comm2':comm2_name
+        'comm1':choice1,
+        'comm2':choice2,
+        'tfidf1':tfidf1,
+        'tfidf2':tfidf2,
     }
     return render(request, template_name='main/results.html', context=context)

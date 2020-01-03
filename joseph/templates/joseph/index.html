@@ -14,47 +14,105 @@
 </head>
 
 <body>
-  
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="#">Joseph Rajchwald</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/articles">Articles</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Me
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/joseph">About</a>
-            <a class="dropdown-item" href="https://www.github.com/jayrockwalled">Github</a>
-            <a class="dropdown-item" href="https://www.linkedin.com/in/joseph-rajchwald-28a793b0/">LinkdIn</a>
-          </div>
-        </li>
+    <div class="wrapper">
+    <div class="content-wrap">
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#">Joseph Rajchwald</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/articles">Articles</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="/joseph">
+              Me
+            </a>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="container">
+      <div class="row">
+      <div class="card">
+        {% load static %}
+        <img class="card-img-top img-thumbnail" src="{% static "joseph/epic.jpg" %}" alt="Card image cap">
+        <ul>
+          <li>Epic Systems <span class="text-muted">· August 2016 - June 2019</span></li>
+          <ul><li>Technical Services Engineer</li></ul>
+      </div>
+
+      <div class="card">
+        {% load static %}
+        <img class="card-img-top img-thumbnail" src="{% static "joseph/uiuc.jpg" %}" alt="Card image cap">
+        <ul>
+        <li>University of Illinois at Urbana-Champaign <span class="text-muted">· August 2013 - May 2016</span></li>
+          <ul>
+            <li>Research Assistant, Teaching Assistant, Engineering Student Admission Representative</li>
+            <li>B.S. in Nuclear, Plasma, and Radiological Engineering</li>
+          </ul>
+        </ul>
+      </div>
+      </div>
+    </div>
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Gaming</li>
+          <ul>
+            <li>League of Legends</li>
+            <li>Super Smash Bros. Melee</li>
+          </ul>
+        <li>Fitness</li>
+          <ul>
+            <li>Strength</li>
+            <li>Brazilian Jiu-Jitsu</li>
+            <li>Swimming</li>
+          </ul>
+        <li>Math</li>
+          <ul>
+            <li>Currently 28 problems solved on <a href='projecteuler.net'>projecteuler.net</a></li>
+          </ul>
       </ul>
     </div>
-  </nav>
+  </div> 
 
-
-  <div class="container">
-  <h1>Joseph Rajchwald</h1>
-  <p>I taught myself various assets of programming by engaging myself in projects. To learn python
-    and basic algorithms, I solved problems on projecteuler.net. To learn web development, I build 
-    this website. To learn about NLP and machine learning, I did projects that interested me associated
-    with those topics.
-  </p>
-  </div>
-
-
-
-</div>
-<a href="mailto:joseph.rajchwald1@gmail.com">Contact</a>
-</body>
+  <br>
+<!-- lazy workaround to footer covering content -->
+<br>
+  <footer class="page-footer font-small unique-color-dark pt-4">
+      <div class="footercontainer">
+  
+          <!-- Call to action -->
+          <ul class="list-unstyled list-inline text-center py-2">
+            <li class="list-inline-item">
+                <a class="btn" href="https://www.github.com/jayrockwalled">
+                  {% load static %}
+                  <img src="{% static "articles/github_logo.png" %}">
+                  Github</a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn" href="https://www.github.com/jayrockwalled">
+                  {% load static %}
+                  <img src="{% static "articles/linkedin_logo.png" %}">
+                  LinkdIn</a>
+            </li>
+            <li class="list-inline-item">
+                <a class="btn" href="mailto:joseph.rajchwald1@gmail.com">
+                    {% load static %}
+                    <img src="{% static "articles/email_logo.png" %}">
+                    Email</a>
+            </li>
+          </ul>
+      
+        </div>
+      </div>
+  
+  
+  </footer>
+  </body>
