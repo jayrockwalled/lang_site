@@ -25,7 +25,9 @@ SECRET_KEY = '^nn2b(xsvxnnkjt^mhegix-aj5xpvjbu9b47*2$2b82m^^xj!*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://fast-inlet-67382.herokuapp.com/'
+]
 
 
 # Application definition
