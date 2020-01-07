@@ -95,6 +95,19 @@ table{
     margin-bottom: 0px;
   }
 
-  .wrapper {
-    height: 100%
+  .btn {
+    margin: 12px 0;
+    color: whitesmoke;
+    background-color: gray;
   }
+
+
+  .wrapper {
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  .content-wrapper {
+    padding-bottom: 10rem;
+  }
+  

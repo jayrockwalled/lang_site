@@ -3,7 +3,7 @@ body {
   color: black;
 }
 
-h1, h3, h5 {
+h1, h2,  h3, h5 {
   text-align: center;
   color: black
 }
@@ -106,4 +106,12 @@ footer ul {
 .btn {
   color: whitesmoke;
   background-color: grey;
+}
+
+.card-img-top {
+  width: 50%
+}
+
+.card {
+  width: 50%
 }

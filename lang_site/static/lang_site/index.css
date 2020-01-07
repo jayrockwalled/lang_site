@@ -58,3 +58,19 @@ body {
   input{
     text-align:center;
  }
+
+ footer {
+  background-color: black;
+  color: whitesmoke;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+  height: auto;
+  min-height: 10%;
+}
+
+.btn {
+  color: whitesmoke;
+  background-color: gray;
+}

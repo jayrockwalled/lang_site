@@ -28,15 +28,8 @@
         <li class="nav-item">
           <a class="nav-link" href="/articles">Articles</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Me
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/joseph">About</a>
-            <a class="dropdown-item" href="https://www.github.com/jayrockwalled">Github</a>
-            <a class="dropdown-item" href="https://www.linkedin.com/in/joseph-rajchwald-28a793b0/">LinkdIn</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link" href="/joseph">Me</a>
         </li>
       </ul>
     </div>
@@ -46,24 +39,33 @@
 {% endblock %}
 </div>
 <footer class="page-footer font-small unique-color-dark pt-4">
-    <div class="footercontainer">
+  <div class="footercontainer">
 
-        <!-- Call to action -->
-        <ul class="list-unstyled list-inline text-center py-2">
-          <li class="list-inline-item">
-              <a href="https://www.github.com/jayrockwalled">Github</a>
-          </li>
-          <li class="list-inline-item">
-              <a href="https://www.github.com/jayrockwalled">LinkdIn</a>
-          </li>
-          <li class="list-inline-item">
-              <a href="mailto:joseph.rajchwald1@gmail.com">Email</a>
-          </li>
-        </ul>
-        <!-- Call to action -->
-    
-      </div>
-
+      <!-- Call to action -->
+      <ul class="list-unstyled list-inline text-center py-2">
+        <li class="list-inline-item">
+            <a class="btn" href="https://www.github.com/jayrockwalled">
+              {% load static %}
+              <img src="{% static "lang_site/github.jpg" %}">
+              Github</a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn" href="https://www.linkedin.com/in/joseph-rajchwald-28a793b0/">
+              {% load static %}
+              <img src="{% static "lang_site/linkdin.jpg" %}">
+              LinkdIn</a>
+        </li>
+        <li class="list-inline-item">
+            <a class="btn" href="mailto:joseph.rajchwald1@gmail.com">
+                {% load static %}
+                <img src="{% static "lang_site/gmail.jpg" %}">
+                Email</a>
+        </li>
+      </ul>
+      <!-- Call to action -->
+  
+    </div>
+  </div>
 
 
 </footer>
