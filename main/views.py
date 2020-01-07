@@ -51,7 +51,7 @@ def Community(request):
         
 
 def CommView(request,choice1,choice2,slug):
-    path1 ='C:/Users/josep/Documents/Github/lang_site/main/word2vec/'
+    path1 ='lang_site/main/word2vec/'
     slug = slug.lower()
     if len(slug.split('-')) > 1:
         error = 'Please only enter a single word.'
@@ -75,8 +75,8 @@ def CommView(request,choice1,choice2,slug):
         error = 'That word is not in both communities\' vocabulary.'
         return render(request, template_name='main/error.html', context={'error':error})
 
-    df1 = pd.read_csv('C:/Users/josep/Documents/Github/lang_site/main/tfidf/'+choice1+'_tfidf_df.csv')
-    df2 = pd.read_csv('C:/Users/josep/Documents/Github/lang_site/main/tfidf/'+choice2+'_tfidf_df.csv')
+    df1 = pd.read_csv('lang_site/main/tfidf/'+choice1+'_tfidf_df.csv')
+    df2 = pd.read_csv('lang_site/main/tfidf/'+choice2+'_tfidf_df.csv')
     tfidf1 = df1[slug].to_string(index=False)
     tfidf2 = df2[slug].to_string(index=False)
     zipped = zip(most_similar1, most_similar2)
