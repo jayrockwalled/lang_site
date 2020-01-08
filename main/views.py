@@ -55,34 +55,37 @@ def Community(request):
 
 def CommView(request,choice1,choice2,slug):
 
-        
+    slug = slug.lower()
+    if len(slug.split('-')) > 1:
+        error = 'Please only enter a single word.'
+        return render(request, template_name='main/error.html', context={'error':error})
+    
     s3 = boto3.resource('s3',
-         aws_access_key_id='AKIAIQ77Y5D4LAGEMZLA',
-         aws_secret_access_key= 'Ndzg4MDUQXgLWPcOwWTUCPwb1TDBfW7063P')
+        aws_access_key_id='AKIAIQ77Y5D4LAGEMZLA',
+        aws_secret_access_key= 'Ndzg4MDUQXgLWPcOwWTUCPwb1TDBfW7063P')
     # url_prefix = 's3://' + 'AKIAIQ77Y5D4LAGEMZLA' + ':' + 'uRJT/Ndzg4MDUQXgLWPcOwWTUCPwb1TDBfW7063P' + "@herokulangsite/"
     url_prefix = 's3://herokulangsite'
     w2v_url_1 = url_prefix+'/w2v/'+choice1+'_word2vec.model'
     w2v_url_2 = url_prefix+'/w2v/'+choice2+'_word2vec.model'
     tfidf_url_1 = url_prefix+'/tfidf/'+choice1+'_tfidf_df.csv'
     tfidf_url_2 = url_prefix+'/tfidf/'+choice2+'_tfidf_df.csv'
-
-    slug = slug.lower()
-    if len(slug.split('-')) > 1:
-        error = 'Please only enter a single word.'
-        return render(request, template_name='main/error.html', context={'error':error})
-    
     # wv1 = choice1+'_word2vec.model'
     # wv2 = choice2+'_word2vec.model'
+    s3 = boto3.client('s3')
+    w2v1 = s3.get_object(Bucket='herokulangsite', Key='w2v/'+choice1+'_word2vec.model')
+    w2v2 = s3.get_object(Bucket='herokulangsite', Key='w2v/'+choice2+'_word2vec.model')
+    tfidf1 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice1+'_tfidf_df.csv')
+    tfidf2 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice2+'_tfidf_df.csv')
 
     try:
         # w2v_file1 = urlopen(w2v_url_1)
-        model1 = Word2Vec.load(w2v_url_1, mmap='r')
+        model1 = Word2Vec.load(w2v1['Body'], mmap='r')
         most_similar1 = model1.wv.most_similar(slug)
         most_similar1 = most_similar1[0:5]
         freq1 = model1.wv.vocab[slug].count
 
         # w2v_file2 = urlopen(w2v_url_2)
-        model2 = Word2Vec.load(w2v_url_2, mmap='r')
+        model2 = Word2Vec.load(w2v2['Body'], mmap='r')
         most_similar2 = model2.wv.most_similar(slug)
         most_similar2 = most_similar2[0:5]
         freq2 = model2.wv.vocab[slug].count
@@ -94,8 +97,8 @@ def CommView(request,choice1,choice2,slug):
 
     # tfidf_file1 = urlopen(tfidf_url_1)
     # tfidf_file2 = urlopen(tfidf_url_2)
-    df1 = pd.read_csv(tfidf_url_1)
-    df2 = pd.read_csv(tfidf_url_2)
+    df1 = pd.read_csv(tfidf1['Body'])
+    df2 = pd.read_csv(tfidf2['Body'])
     tfidf1 = df1[slug].to_string(index=False)
     tfidf2 = df2[slug].to_string(index=False)
     zipped = zip(most_similar1, most_similar2)
