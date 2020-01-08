@@ -9,7 +9,6 @@ from gensim.models import Word2Vec
 import re
 from gensim.corpora import Dictionary
 import pandas as pd
-import request
 import boto3
 import os
 from urllib.request import urlopen
