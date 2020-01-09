@@ -51,6 +51,7 @@ form {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
   }
 
   .form-control {
@@ -60,6 +61,7 @@ form {
 
   .jumbotext {
     color: whitesmoke;
+    text-align: center;
   }
   input{
     text-align:center;
