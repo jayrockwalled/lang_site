@@ -61,17 +61,17 @@ def CommView(request,choice1,choice2,slug):
         return render(request, template_name='main/error.html', context={'error':error})
 
     s3 = boto3.client('s3')
-    w2v1 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice1+'_vectors.kv')
-    w2v2 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice2+'_vectors.kv')
+    # w2v1 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice1+'_vectors.kv')
+    # w2v2 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice2+'_vectors.kv')
     tfidf1 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice1+'_tfidf_df.csv')
     tfidf2 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice2+'_tfidf_df.csv')
 
     try:
-        model1 = KeyedVectors.load(w2v1['Body'], mmap='r')
+        model1 = KeyedVectors.load('s3://herokulangsite/vectors/'+choice1+'_vectors.kv', mmap='r')
         most_similar1 = model1.most_similar(slug)
         most_similar1 = most_similar1[0:5]
 
-        model2 = KeyedVectors.load(w2v2['Body'], mmap='r')
+        model2 = KeyedVectors.load('s3://herokulangsite/vectors/'+choice2+'_vectors.kv', mmap='r')
         most_similar2 = model2.most_similar(slug)
         most_similar2 = most_similar2[0:5]
 
