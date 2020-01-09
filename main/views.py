@@ -75,18 +75,8 @@ def CommView(request,choice1,choice2,slug):
         most_similar2 = model2.most_similar(slug)
         most_similar2 = most_similar2[0:5]
 
-    except Exception as e:
-        # error = 'That word is not in both communities\' vocabulary.'
-                # Get line
-        trace=traceback.extract_tb(sys.exc_info()[2])
-        # Add the event to the log
-        output ="Error in the server: %s.\n" % (e)
-        output+="\tTraceback is:\n"
-        for (file,linenumber,affected,line)  in trace:
-            output+="\t> Error at function %s\n" % (affected)
-            output+="\t  At: %s:%s\n" % (file,linenumber)
-            output+="\t  Source: %s\n" % (line)
-        output+="\t> Exception: %s\n" % (e)
+    except:
+        error = 'That word is not in both communities\' vocabulary.'
         return render(request, template_name='main/error.html', context={'error':output})
 
     df1 = pd.read_csv(tfidf1['Body'])
@@ -96,8 +86,6 @@ def CommView(request,choice1,choice2,slug):
     zipped = zip(most_similar1, most_similar2)
     context = {
         'zip': zipped, 
-        'freq1':freq1, 
-        'freq2':freq2,
         'comm1':choice1,
         'comm2':choice2,
         'tfidf1':tfidf1,
