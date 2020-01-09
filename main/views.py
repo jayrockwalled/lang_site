@@ -59,10 +59,6 @@ def CommView(request,choice1,choice2,slug):
     if len(slug.split('-')) > 1:
         error = 'Please only enter a single word.'
         return render(request, template_name='main/error.html', context={'error':error})
-    
-    # s3 = boto3.resource('s3',
-    #     aws_access_key_id='AKIAIQ77Y5D4LAGEMZLA',
-    #     aws_secret_access_key= 'Ndzg4MDUQXgLWPcOwWTUCPwb1TDBfW7063P')
 
     s3 = boto3.client('s3')
     w2v1 = s3.get_object(Bucket='herokulangsite', Key='w2v/'+choice1+'_word2vec.model')
@@ -71,13 +67,11 @@ def CommView(request,choice1,choice2,slug):
     tfidf2 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice2+'_tfidf_df.csv')
 
     try:
-        # w2v_file1 = urlopen(w2v_url_1)
         model1 = Word2Vec.load(w2v1['Body'], mmap='r')
         most_similar1 = model1.wv.most_similar(slug)
         most_similar1 = most_similar1[0:5]
         freq1 = model1.wv.vocab[slug].count
 
-        # w2v_file2 = urlopen(w2v_url_2)
         model2 = Word2Vec.load(w2v2['Body'], mmap='r')
         most_similar2 = model2.wv.most_similar(slug)
         most_similar2 = most_similar2[0:5]
@@ -85,8 +79,17 @@ def CommView(request,choice1,choice2,slug):
 
     except Exception as e:
         # error = 'That word is not in both communities\' vocabulary.'
-        error = str(e)
-        return render(request, template_name='main/error.html', context={'error':error})
+                # Get line
+        trace=traceback.extract_tb(sys.exc_info()[2])
+        # Add the event to the log
+        output ="Error in the server: %s.\n" % (e)
+        output+="\tTraceback is:\n"
+        for (file,linenumber,affected,line)  in trace:
+            output+="\t> Error at function %s\n" % (affected)
+            output+="\t  At: %s:%s\n" % (file,linenumber)
+            output+="\t  Source: %s\n" % (line)
+        output+="\t> Exception: %s\n" % (e)
+        return render(request, template_name='main/error.html', context={'error':output})
 
     df1 = pd.read_csv(tfidf1['Body'])
     df2 = pd.read_csv(tfidf2['Body'])
