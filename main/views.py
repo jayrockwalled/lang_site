@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django import forms
 from gensim.models import Word2Vec
 import re
-from gensim.corpora import Dictionary
+from gensim.models import KeyedVectors
 import pandas as pd
 import boto3
 import os
@@ -61,21 +61,19 @@ def CommView(request,choice1,choice2,slug):
         return render(request, template_name='main/error.html', context={'error':error})
 
     s3 = boto3.client('s3')
-    w2v1 = s3.get_object(Bucket='herokulangsite', Key='w2v/'+choice1+'_word2vec.model')
-    w2v2 = s3.get_object(Bucket='herokulangsite', Key='w2v/'+choice2+'_word2vec.model')
+    w2v1 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice1+'_vectors.kv')
+    w2v2 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice2+'_vectors.kv')
     tfidf1 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice1+'_tfidf_df.csv')
     tfidf2 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice2+'_tfidf_df.csv')
 
     try:
-        model1 = Word2Vec.load(w2v1['Body'], mmap='r')
-        most_similar1 = model1.wv.most_similar(slug)
+        model1 = KeyedVectors.load(w2v1['Body'], mmap='r')
+        most_similar1 = model1.most_similar(slug)
         most_similar1 = most_similar1[0:5]
-        freq1 = model1.wv.vocab[slug].count
 
-        model2 = Word2Vec.load(w2v2['Body'], mmap='r')
-        most_similar2 = model2.wv.most_similar(slug)
+        model2 = KeyedVectors.load(w2v2['Body'], mmap='r')
+        most_similar2 = model2.most_similar(slug)
         most_similar2 = most_similar2[0:5]
-        freq2 = model2.wv.vocab[slug].count
 
     except Exception as e:
         # error = 'That word is not in both communities\' vocabulary.'
