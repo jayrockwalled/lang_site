@@ -15,7 +15,7 @@
 
 <body>
     <div class="wrapper">
-    <div class="content-wrap">
+    <div class="content-wrapper">
     <nav class="navbar navbar-expand-lg">
       <a class="navbar-brand" href="#">Joseph Rajchwald</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,73 +30,124 @@
           <li class="nav-item">
             <a class="nav-link" href="/articles">Articles</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown" href="/joseph">
+          <li class="nav-item">
+            <a class="nav-link" href="/joseph">
               Me
             </a>
+          </li>
         </ul>
       </div>
     </nav>
     
     <div class="container">
+      <br>
       <h2>Experience and Education</h2>
       <div class="row">
       <div class="card">
+        <div class="row">
+        <div class="col-md-2">
         {% load static %}
-        <span class="float-left">
-        <img class="card-img-top img-thumbnail float-left" src="{% static "joseph/epic.jpg" %}" alt="Card image cap">
-        </span>
-        <span class="foat-right">
+        <img class="card-img-top img-thumbnail" src="{% static "joseph/epic.jpg" %}" alt="Card image cap">
+        </div>
+        <div class="col-md-10">
         <ul>
-          <li>Epic Systems <span class="text-muted">· August 2016 - June 2019</span></li>
+          Epic Systems <br>
+          <span class="text-muted">August 2016 - June 2019</span></li>
           <ul>
             <li>Technical Services Engineer</li>
             <li>Ambulatory Reporting Lead</li>
+            <li>Project management, server side programming, customer relations</li>
           </ul>
-        </span>
+        </div>
+        </div>
       </div>
       <div class="card">
-        {% load static %}
-        <span class="float-left">
-        <img class="card-img-top img-thumbnail float-left" src="{% static "joseph/uiuc.jpg" %}" alt="Card image cap">
-        </span>
-        <span class="foat-right">
-        <ul>
-        <li>University of Illinois at Urbana-Champaign <span class="text-muted">· August 2013 - May 2016</span></li>
-          <ul>
-            <li>Research Assistant, Teaching Assistant, Engineering Student Admission Representative</li>
-            <li>B.S. in Nuclear, Plasma, and Radiological Engineering</li>
-          </ul>
-        </ul>
-        </span>
-      </div>
-      </div>
-    
-      <h2>Hobbies</h2>
         <div class="row">
-        <div class="card">
+          <div class="col-md-2">
+        {% load static %}
+        <img class="card-img-top img-thumbnail" src="{% static "joseph/uiuc.jpg" %}" alt="Card image cap">
+          </div>
+        <div class="col-md-10">
         <ul>
-        <li>Gaming</li>
+        University of Illinois at Urbana-Champaign <span class="text-muted"> <br>
+        August 2013 - May 2016</span>
           <ul>
-            <li>League of Legends</li>
-            <li>Super Smash Bros. Melee</li>
+            <li>Research Assistant, Teaching Assistant</li>
+            <li>B.S. in Nuclear, Plasma, and Radiological Engineering</li>
+            <li>Dean’s List, Nuclear Regulatory Commission Scholarship, James Scholar</li>
           </ul>
         </ul>
         </div>
+      </div>
+      </div>
+    </div>
+    <br>
+      <h2>Hobbies</h2>
+        <div class="row">
         <div class="card">
+        Gaming
           <ul>
-        <li>Fitness</li>
+            <li>League of Legends</li>
+              <ul>
+                <li>Mid/Jungle main</li>
+                <li>Season 4 Diamond 2</li>
+              </ul>
+            <li>Super Smash Bros. Melee</li>
+              <ul>
+                <li>Sheik main</li>
+                <li>Former number 1 on the Epic Systems melee power rankings</li>
+              </ul>
+          </ul>
+        </div>
+        <div class="card">
+
+        Fitness
           <ul>
             <li>Strength</li>
             <li>Brazilian Jiu-Jitsu</li>
             <li>Swimming</li>
+          <ul>
+                <li>High school athlete - breast stroke and IM</li>
+                <li></li>
+              </ul>
           </ul>
-        </ul>
+        </div>
+      </div>
+      <br>
+      <h2>Favorites</h2>
+      <div class="row">
+        <div class="card">
+        Books
+          <ul>
+            <li>Contemporary Fiction</li>
+              <ul>
+                <li>The Windup Bird Chronicle, Haruki Murakami</li>
+                <li>A Hologram for a King, Dave Eggers</li>
+              </ul>
+            <li>Nonfiction</li>
+              <ul>
+                <li>10% Happier, Sam Harris</li>
+                <li>A Year of Magical Thinking, Joan Didion</li>
+              </ul>
+          </ul>
+        </div>
+        <div class="card">
+
+        Movies/TV
+          <ul>
+            <li>Strength</li>
+            <li>Brazilian Jiu-Jitsu</li>
+            <li>Swimming</li>
+          <ul>
+                <li>High school athlete - breast stroke and IM</li>
+                <li></li>
+              </ul>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  </div> 
+
 
   <br>
 <!-- lazy workaround to footer covering content -->
@@ -129,6 +180,7 @@
         </div>
       </div>
   
-  
+
   </footer>
+</div> 
   </body>

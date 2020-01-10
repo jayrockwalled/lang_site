@@ -97,7 +97,7 @@ footer ul {
   min-height: 100vh;
 }
 
-.content-wrap {
+.content-wrapper {
   position: relative;
   min-height: 100vh;
   margin-bottom: 10px;
@@ -108,10 +108,15 @@ footer ul {
   background-color: grey;
 }
 
-.card-img-top {
+.card {
   width: 50%
 }
 
-.card {
-  width: 50%
+.wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.navbar-brand {
+  margin-left: 10px;
 }

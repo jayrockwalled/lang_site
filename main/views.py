@@ -57,12 +57,10 @@ def CommView(request,choice1,choice2,slug):
 
     slug = slug.lower()
     if len(slug.split('-')) > 1:
-        error = 'Please only enter a single word.'
+        error = 'Please enter only a single word.'
         return render(request, template_name='main/error.html', context={'error':error})
 
     s3 = boto3.client('s3')
-    # w2v1 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice1+'_vectors.kv')
-    # w2v2 = s3.get_object(Bucket='herokulangsite', Key='vectors/'+choice2+'_vectors.kv')
     tfidf1 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice1+'_tfidf_df.csv')
     tfidf2 = s3.get_object(Bucket='herokulangsite', Key='tfidf/'+choice2+'_tfidf_df.csv')
 
