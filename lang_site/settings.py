@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'sheltered-castle-66145.herokuapp.com'
+    'jayrockwalled.herokuapp.com'
 ]
 
 
