@@ -124,3 +124,7 @@ table{
       margin: auto;
   }
   }
+
+  .container a {
+    color: black;
+  }
