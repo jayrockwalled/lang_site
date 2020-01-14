@@ -7,4 +7,4 @@ from django.http import HttpResponseRedirect
 from django import forms
 
 def Index(request):
-    return redirect('joseph:Index')
+    return redirect('joseph:index')
