@@ -120,6 +120,7 @@ table{
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     [class*="container"] {
-      width: 85%;
+      width: 90%;
+      margin: auto;
   }
   }
