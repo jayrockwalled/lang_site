@@ -1,3 +1,3 @@
 # lang_site
 
-This branch adds articles.
+This is the all of the code for my personal website. Hosted at https://jayrockwalled.herokuapp.com
